@@ -1,0 +1,173 @@
+$o-orange = #FF8B03
+$o2-orange = #FFE4B8
+$n-orange = #FFC075
+$c-orange = #FF8A00
+$b-green = #88ECB9
+$t-green = #73E7AA
+$i-green = #E8FAF1
+
+#app
+  font-family 'Roboto', sans-serif
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  text-align center
+  color #2c3e50
+  margin-top 60px
+
+body
+  background-color #FEFAE6
+
+.container
+  padding-right 15px
+  padding-left 15px
+  margin-right auto
+  margin-left auto
+
+  @media screen and (min-width: 768px)
+    width 750px
+  @media screen and (min-width: 992px)
+    width 970px
+  @media screen and (min-width: 1200px)
+    width 1170px
+
+.do-flex
+  display flex
+
+.flex-row
+  flex-direction row
+
+.flex-column
+  flex-direction column
+
+.flex-r-center
+  flex-direction row
+  justify-content center
+
+.flex-c-center
+  flex-direction row
+  justify-content center
+
+.f-between
+  justify-content space-between
+
+.flex-wrap
+  flex-wrap wrap
+
+.flex-nowrap
+  flex-wrap nowrap
+
+.head-xl
+  font-size 25px
+  font-weight 700
+  color $o-orange
+
+.head-l
+  font-size 18px
+  font-weight 700
+  color $o-orange
+
+.space-2
+  margin 8px 0
+
+.box
+  padding 12px 22px 1px 6px
+  border-color #EEEEEE
+  border-style solid
+  border-width thin
+  width 42%
+  margin-right 10px
+  margin-bottom 10px
+  input, textarea
+    padding 10px 44px 20px 2px
+    box-sizing border-box
+    background-color transparent
+    box-shadow none
+    outline none
+    width 20vw
+    border none
+  .form
+    display flex
+    flex-direction row
+    div
+      top 10px
+      left 10px
+      position relative
+      label
+        position absolute
+        top -6px
+        left 0
+        color #999
+        transition 0.5s
+        pointer-events none
+
+.box input:focus~label,
+.box textarea:focus~label,
+.box textarea:valid~label,
+.box input:valid~label
+  top -11px
+  left 0
+  color #5f5c5c
+/*.box input:focus,*/
+/*.box input:valid*/
+/*  border-bottom 2px solid red*/
+
+.wrap-text
+  display flex
+  flex-direction column
+
+.t-head
+  z-index 1
+  color $o-orange
+  font-size 29px
+  font-weight 700
+
+.t-box
+  padding 3px
+  position relative
+  width 208px
+  bottom 12px
+  background-color #EEEEEE
+
+.point
+  cursor pointer
+
+.check
+  position relative
+  left 298px
+  top  -29px
+
+.check-2
+  position relative
+  left 298px
+  top  -29px
+
+.check-tx
+  position relative
+  left 298px
+  top  -59px
+
+.box-2
+  cursor pointer
+  padding 12px 22px 12px 10px
+  border-color #EEEEEE
+  border-style solid
+  border-width thin
+  width 22%
+  margin-right 10px
+  margin-bottom 10px
+
+.button
+  background-color $c-orange
+  border none
+  color #EEEEEE
+  padding 13px 28px
+  text-align center
+  text-decoration none
+  display inline-block
+  font-size 16px
+  margin 4px 2px
+  cursor pointer
+  transition all 0.4s
+  &:hover
+    color #7a7263
+    background-color #f5a64d
