@@ -1,5 +1,10 @@
 <template>
   <div>
+    <Modal v-if="showError" :error-messages="errorMessagesHTML">
+      <template slot="closeButton">
+        <span class="close-modal" @click="closeError">&times;</span>
+      </template>
+    </Modal>
     <TabCard :tabs="tabs" :initial-tab="initialTab">
       <template
         v-for="(c, i) in contents"
@@ -45,7 +50,6 @@
             <div style="margin-left: 7px;">  </div>
           </div>
           <div class="tab-panel-divide">
-
             <div class="f-left p-1 border-right" v-if="divNotFinish(c.initial)">
               <div id="not-finish" v-for="(data, i) in c.dataContent" :key="i">
                 <div class="do-flex flex-row f-between flex-wrap">
@@ -167,7 +171,6 @@
                 </div>
               </div>
             </div>
-
             <div class="f-left p-1 border-right" v-else>
               <div class="center-div done">
                 <div class="wrap-text" style="text-align: left">
@@ -290,11 +293,13 @@
 <script>
 import TabCard from '../components/Tabs.vue';
 import dataContentAPI from '../content';
+import Modal from '../components/Modal.vue';
 
 export default {
   name: 'Home',
   components: {
     TabCard,
+    Modal,
   },
   watch: {
   },
@@ -313,6 +318,8 @@ export default {
   },
   data() {
     return {
+      errorMessagesHTML: '',
+      showError: false,
       m_delivery: true,
       m_payment: false,
       m_finish: false,
@@ -492,6 +499,14 @@ export default {
       }
       return 'num';
     },
+    generateHTML(errors = this.errors) {
+      let err = '';
+      errors.forEach((val) => {
+        err += `<li style="padding: 6px 0;"> ${val} </li>`;
+      });
+      const style = 'text-align: left;list-style: hangul-consonant';
+      this.errorMessagesHTML = `<ul style='${style}'> ${err} </ul>`;
+    },
     nextStep(event, v, isFistStep = false) {
       const obj = this.binding;
       const storageBinding = JSON.stringify(obj);
@@ -502,18 +517,22 @@ export default {
         keys.forEach((val) => {
           if (!obj[val].wrong && obj[val].required && obj[val].empty) {
             if (this.value.address === '') {
-              this.errors.push(`${val} is required`);
+              this.errors.push(`<b> ${val} </b> is required`);
             } else {
-              this.errors.push(`${val} length must be no more 120 chars`);
+              this.errors.push(`<b> ${val} </b> length must be no more 120 chars`);
             }
           }
 
           if (obj[val].wrong && !obj[val].empty && !obj[val].required) {
-            this.errors.push(`${val} is invalid`);
+            this.errors.push(`<b> ${val} </b> is invalid`);
           }
         });
+        if (this.value.address.length > 120) {
+          this.errors.push('<b> address </b> length must be no more 120 chars');
+        }
         if (this.errors.length >= 1) {
-          alert(this.errors.join(', '));
+          this.generateHTML();
+          this.showError = true;
           this.errors = [];
           return event('delivery');
         }
@@ -534,14 +553,15 @@ export default {
         const getData = (key) => Object.keys(key).find((val) => key[val].value === true);
         const [ship, pay] = [choosingPayment.shipment, choosingPayment.payment];
         if (!getData(ship) === true) {
-          this.errors.push('required to choose a shipment');
+          this.errors.push('required to choose a <b> shipment </b>');
         }
         if (!getData(pay) === true) {
-          this.errors.push('required to choose a payment');
+          this.errors.push('required to choose a <b> payment </b>');
         }
 
         if (this.errors.length >= 1) {
-          alert(this.errors.join(', '));
+          this.generateHTML();
+          this.showError = true;
           this.errors = [];
           return event('payment');
         }
@@ -715,6 +735,9 @@ export default {
     },
     checkMarkPayment(v) {
       return `color: ${v.bColor};`;
+    },
+    closeError() {
+      this.showError = false;
     },
   },
 };

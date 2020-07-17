@@ -49,12 +49,14 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+$shadow = rgba(255,241,212,0.56)
+
 .card-body
   padding 1.3rem 1rem 1.8rem 1rem
   background-color white
-  -webkit-box-shadow 4px 8px 0px -1px rgba(255,241,212,0.56)
-  -moz-box-shadow 4px 8px 0px -1px rgba(255,241,212,0.56)
-  box-shadow 4px 8px 0px -1px rgba(255,241,212,0.56)
+  -webkit-box-shadow 4px 8px 0px -1px $shadow
+  -moz-box-shadow 4px 8px 0px -1px $shadow
+  box-shadow 4px 8px 0px -1px $shadow
   text-align left
   height 500px
   @media (min-width: 320px) and (max-width: 480px)
