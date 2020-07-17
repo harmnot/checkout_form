@@ -489,8 +489,9 @@ export default {
         this.disable = 'not-allowed';
         this.summarySide.delete('fee');
         this.sumCheckOut();
+        return;
       }
-      this.summarySide.set('fee', { text: 'Dropshiiping Fee', value: 5900 });
+      this.summarySide.set('fee', { text: 'Dropshipping Fee', value: 5900 });
       this.sumCheckOut();
       this.disable = '';
     },
