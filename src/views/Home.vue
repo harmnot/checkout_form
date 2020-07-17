@@ -7,9 +7,8 @@
         slot-scope="{switchTab}"
       >
           <div
-            class="do-flex flex-row f-between"
+            class="do-flex flex-row f-between div-nav"
             :key="i"
-            style="width: 120px; margin-right: 7px"
             @click="nextStep(switchTab, c.initial, true)"
           >
             <div class="do-flex flex-row" style="cursor: pointer">
@@ -27,8 +26,7 @@
       </template>
       <template
         v-for="(c, firstI) in contents"
-        :slot="`tab-panel-${c.initial
-        }`"
+        :slot="`tab-panel-${c.initial}`"
         slot-scope="{switchAgain}"
       >
         <div :key="c.initial">
@@ -150,7 +148,7 @@
                     @click="chooseOne(firstI, i, k)"
                     :style="changeStylePayment(choose[data.caption.toLowerCase()][inputC.as])"
                   >
-                    <div class="do-flex flex-column">
+                    <div class="do-flex flex-column fz">
                       <div class="my-auto">
                         {{ inputC.name }}
                       </div>
@@ -171,7 +169,7 @@
             </div>
 
             <div class="f-left p-1 border-right" v-else>
-              <div class="center-div" style="height: 50vh">
+              <div class="center-div done">
                 <div class="wrap-text" style="text-align: left">
                   <span class="t-head"> {{ c.dataContent[0].caption }} </span>
                   <span class="t-box"> </span>
@@ -192,7 +190,7 @@
                 </div>
               </div>
             </div>
-            <div class="f-right do-flex flex-column p-1 f-between">
+            <div class="f-right do-flex flex-column pfr-1 f-between">
               <div class="do-flex flex-column">
                 <span class="head-l"> Summary </span>
                 <span class="space-2"> 10 items purchased </span>
@@ -220,7 +218,7 @@
               <div class="desc">
               </div>
               <div class="total">
-                <div class="do-flex flex-row f-between f-wrap">
+                <div class="do-flex flex-row f-between f-wrap fz">
                   <div>
                     {{ getValueMap('cost').text }}
                   </div>
@@ -229,7 +227,7 @@
                   </div>
                 </div>
                 <div
-                  class="do-flex flex-row f-between f-wrap"
+                  class="do-flex flex-row f-between f-wrap fz"
                   v-if="getValueMap('fee') && checkbox"
                   style="margin: 10px 0;"
                 >
@@ -241,7 +239,7 @@
                   </div>
                 </div>
                 <div
-                  class="do-flex flex-row f-between f-wrap"
+                  class="do-flex flex-row f-between f-wrap fz"
                   v-if="getValueMap('shipment')"
                   style="margin: 10px 0 15px 0;"
                 >
@@ -721,6 +719,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>

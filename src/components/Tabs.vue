@@ -57,6 +57,8 @@ export default {
   box-shadow 4px 8px 0px -1px rgba(255,241,212,0.56)
   text-align left
   height 500px
+  @media (min-width: 320px) and (max-width: 480px)
+    height 100%
 
 header
   border 1px solid transparent
@@ -66,6 +68,9 @@ header
   top 29px
   margin 30px auto auto
   background-color #FEFAE6
+  @media (min-width: 320px) and (max-width: 480px)
+    position initial
+    width 100%
 
 ul li
   list-style none

@@ -1,0 +1,13 @@
+mediaPort(query)
+  if query == mobile
+    @media (min-width: 320px) and (max-width: 480px)
+      {block}
+  else if query == ipad
+    @media (min-width: 768px) and (max-width: 1024px)
+      {block}
+  else if query == ipad_l
+    @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape)
+      {block}
+  else
+    @media (min-width: 1025px) and (max-width: 1280px)
+      {block}

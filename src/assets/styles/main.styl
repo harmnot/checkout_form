@@ -1,3 +1,5 @@
+@import 'responsive.styl';
+
 $o-orange = #FF8B03
 $o2-orange = #FFE4B8
 $n-orange = #FFC075
@@ -29,6 +31,13 @@ body
     width 970px
   @media screen and (min-width: 1200px)
     width 1170px
+
+.div-nav
+  width 120px
+  margin-right 7px
+  +mediaPort(mobile)
+    width 100px
+    margin 0 auto
 
 .do-flex
   display flex
@@ -77,6 +86,10 @@ body
   width 42%
   margin-right 10px
   margin-bottom 10px
+  +mediaPort(ipad)
+    width 41%
+  +mediaPort(mobile)
+    width 100%
   input, textarea
     padding 10px 44px 20px 2px
     box-sizing border-box
@@ -85,6 +98,12 @@ body
     outline none
     width 20vw
     border none
+
+    +mediaPort(ipad)
+      width 23vw
+    +mediaPort(mobile)
+      width 71vw
+
   .form
     display flex
     flex-direction row
@@ -99,6 +118,10 @@ body
         color #999
         transition 0.5s
         pointer-events none
+        +mediaPort(ipad)
+          width 400px
+        +mediaPort(mobile)
+          width 100%
 
 .box input:focus~label,
 .box textarea:focus~label,
@@ -107,13 +130,18 @@ body
   top -11px
   left 0
   color #5f5c5c
-/*.box input:focus,*/
-/*.box input:valid*/
-/*  border-bottom 2px solid red*/
+
+.box
+  textarea
+    +mediaPort(mobile)
+      width 71vw
+      margin 13px 0 2px 0
 
 .wrap-text
   display flex
   flex-direction column
+  +mediaPort(mobile)
+    margin 10px 0 18px 0
 
 .t-head
   z-index 1
@@ -155,6 +183,8 @@ body
   width 22%
   margin-right 10px
   margin-bottom 10px
+  +mediaPort(mobile)
+    width 100%
 
 .button
   background-color $c-orange
@@ -171,3 +201,5 @@ body
   &:hover
     color #7a7263
     background-color #f5a64d
+  +mediaPort(ipad)
+    font-size 12.3px

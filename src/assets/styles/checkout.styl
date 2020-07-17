@@ -1,3 +1,5 @@
+@import 'responsive.styl';
+
 .or
   color #FF8B03
   font-weight 700
@@ -38,6 +40,13 @@
 
 .p-1
   padding 5px 15px
+  +mediaPort(mobile)
+    padding 0
+
+.pfr-1
+  padding 5px 15px
+  +mediaPort(mobile)
+    padding 10px
 
 .p-l
   padding-right 22px
@@ -47,9 +56,18 @@
   border-right-style solid
   border-right-width thin
 
+  +mediaPort(mobile)
+    border-right-style none
+    border-bottom-style solid
+    border-bottom-width thin
+    margin-bottom 18px
+
 .f-left
   order -1
   flex 0 1 66%
+
+  +mediaPort(mobile)
+    flex 1 1 100%
 
 .f-right
   height 470px
@@ -121,3 +139,15 @@
   align-content center
   > *
     width 50%
+
+.done
+  height 50vh
+
+  +mediaPort(ipad)
+    height 100%
+
++mediaPort(ipad)
+  .fz
+    font-size 14px
+    > *
+      padding 2px 0
