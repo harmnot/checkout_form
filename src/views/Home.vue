@@ -424,7 +424,8 @@ export default {
           color: this.gray,
         },
       },
-      orderID: this.generateRandomString(5),
+      orderID: null,
+      tempOrderID: this.generateRandomString(5),
       initialTab: localStorage.getItem('currentTab') || 'delivery',
       tabs: ['delivery', 'payment', 'finish'],
       contents: dataContentAPI,
@@ -463,6 +464,7 @@ export default {
       this.checkbox = JSON.parse(localStorage.getItem('checkbox'));
       this.choose = JSON.parse(localStorage.getItem('choose')) || this.tempChoose;
       this.isDone = localStorage.getItem('done');
+      this.orderID = localStorage.getItem('orderID') || this.tempOrderID;
       const newMap = new Map();
       newMap.set('cost', { text: 'Cost of Goods', value: 500000 });
       const summary = JSON.parse(localStorage.getItem('summarySide'));
@@ -573,6 +575,7 @@ export default {
         localStorage.setItem('choose', storageChoose);
         this.isDone = true;
         localStorage.setItem('done', 'true');
+        localStorage.setItem('orderID', this.orderID);
         this.m_finish = true;
         return event('finish');
       }
