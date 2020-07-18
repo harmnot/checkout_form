@@ -1,7 +1,7 @@
 # checkout
 
 ## Demo
-<a href="checkout-cart.surge.sh">Checkout Your Cart</a>
+<a href="http://checkout-cart.surge.sh">Checkout Your Cart</a>
 
 ## Project setup
 ```
