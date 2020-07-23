@@ -699,7 +699,7 @@ export default {
 
       if (target.name === 'phone' || target.name === 'dPhone') {
         const value = this.value[target.name];
-        const r = /^\+?\d+(?:-\d+)*(?:\(\d+\)-\d+)*$/;
+        const r = /^\+?\d+(?:\(\d+\))?-?\d+(?:-\d+)?$/;
         if (value !== '') {
           if (!r.test(value) || value.length < 6 || value.length > 20) {
             this.binding[target.name].wrong = true;
